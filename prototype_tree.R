@@ -45,6 +45,9 @@ pre_screening <- function(df, target,control_vec){
                       var0 = as.character("_"),
                       parent_id= 0
   )
+  for(l in c(1,3,5,6,7,9,11)){
+    log1[,l] <- as.numeric(log1[,l])
+  }
   return(list(log1,df))
 }
 
@@ -96,7 +99,7 @@ entropy_hunt<-function(df,target,log,i){
   j <- 1
   while(clean==0 & j<=nrow(infogain)){
     
-    if( length(grep(colnames(df)[info[j,2]],log$var1[i]))>0 ){
+    if( length(grep(colnames(df)[info[j,2]],log$var1[i]))>0  && length(grep(colnames(df)[info[j,2]],log$var0[i]))>0 ){
       j<-j+1
     } else{
       clean <- 1
@@ -174,7 +177,7 @@ decision <- function(df,target_id,control_vec){
           stat <- "node"
         }
         
-        log0 <- data.frame( id =i+k-1,
+        log0 <- data.frame( id = as.numeric(nrow(log)+1),
                             status=stat,
                             n = as.character(n),
                             split_var = colnames(split)[split_index],
@@ -197,10 +200,14 @@ decision <- function(df,target_id,control_vec){
       } else {
       status <- "stop"
     }
-    
-    
   }
-  #log<-log[!is.na(log$prob),]
+  for(l in c(1,3,5,6,7,9,11)){
+    log[,l] <- as.numeric(log[,l])
+  }
+
+  log$status[!(log$id %in% unique(log$parent_id))]<-"leaf"
+  log <- log[ as.numeric(log$n)>0,]
+  
   return(log)
 }
 
@@ -218,10 +225,5 @@ control<-c(cell_min,complex,purity_hi,purity_lo)
 
 result <- decision(test,10,control)
 
-for(i in 1:nrow(result)){
-  print(as.numeric(result$n[i]) > cell_min 
-        && as.numeric(result$num1[i])<= complex 
-        && !is.na(result$n[i]) 
-        && as.numeric(result$prob[i]) > purity_lo 
-        && as.numeric(result$prob[i])<purity_hi)
-}
+##Check for terminus nodes
+  sum(subset(result,result$status=="leaf")$n)
