@@ -99,7 +99,7 @@ entropy_hunt<-function(df,target,log,i){
   j <- 1
   while(clean==0 & j<=nrow(infogain)){
     
-    if( length(grep(colnames(df)[info[j,2]],log$var1[i]))>0  && length(grep(colnames(df)[info[j,2]],log$var0[i]))>0 ){
+    if( length(grep(colnames(df)[info[j,2]],log$var1[i]))>0  || length(grep(colnames(df)[info[j,2]],log$var0[i]))>0 ){
       j<-j+1
     } else{
       clean <- 1
