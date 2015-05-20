@@ -1,5 +1,6 @@
 
-##entropy
+##BUILD TEST DATASET
+##DESC: Create dataset with correlated binary values
 corr_binary<-function(size,col){
   library(bindata)
   test <-data.frame(row.names=1:size)
@@ -13,7 +14,8 @@ corr_binary<-function(size,col){
   return(test)
 }
 
-##PRE-SCREEN
+##PRE-SCREEN THE DATASET
+##This method assesses the base data, creates a log file that is built upon
 pre_screening <- function(df, target,control_vec){
   
   #Setup
@@ -51,7 +53,9 @@ pre_screening <- function(df, target,control_vec){
   return(list(log1,df))
 }
 
-##ENTROPY
+##ENTROPY 
+##Desc: For each iteration in the algorithm, entropy_hunt() will identify an
+## unselected variable that maximizes the information gain criterion
 entropy_hunt<-function(df,target,log,i){
   
   test<-df
@@ -110,7 +114,9 @@ entropy_hunt<-function(df,target,log,i){
 }
 
 
-#######DECISIONS
+#DECISION()
+#Desc: Function that induces a decision tree. 
+#Parameters:
 decision <- function(df,target_id,control_vec){
   
   #Unpack Dataframes
