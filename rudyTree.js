@@ -207,10 +207,10 @@ function binaryTree(obj, input_vec, target_var, min_node){
     output = {"stats":[], "data":[]};
 
     //first round: base split
-    opt = candidateSplit(examp, inputs, "target")
+    opt = candidateSplit(obj, inputs, "target")
     
     //first split
-    nested = nodeSplit(examp,opt);
+    nested = nodeSplit(obj,opt);
     output.data = nested; // Slot in first data
     key_list = Object.keys(nested);
     stat = {"l": nodeStats(nested[key_list[0]],"target"),"r": nodeStats(nested[key_list[1]],"target")}
