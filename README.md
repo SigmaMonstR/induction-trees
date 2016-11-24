@@ -29,7 +29,7 @@ var test_set = [{"id": 1, "target": 1, "input": 1, "input2": 2},
 tab(test_set,"input","target")
 ```
 
-##Supervised Learning - decision-tree.js
+##Supervised Learning - rudyTree.js
 ###binaryTree() - for discrete tree learning
 v1: A easy to use decision tree for binary targets and numeric input variables.
 v2: In development will support discrete input variables and provide facility for ROC curves
