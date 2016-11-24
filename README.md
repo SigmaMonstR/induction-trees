@@ -1,5 +1,5 @@
-# rudy.js
-A machine learning library [in development] for JavaScript.
+# rudy.js - A ML library for JavaScript (in development)
+*(Rudy: cause it might not be fun to do ML in JavaScript, but we just have to keep at it)*
 
 ###Example data
 Some data for illustration
