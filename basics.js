@@ -44,3 +44,20 @@ function sumCol(table, input_var){
     }
     return sum
 }
+
+
+//unique -- get list of unique values
+function unique(obj, input_var){
+    var temp = [];
+   for(var i = 0; i < obj.length; i++){
+       if(temp.indexOf(obj[i][input_var])==-1){
+           temp.push(obj[i][input_var]);
+       }
+   }
+    return(temp)
+}
+
+//print
+function print(obj){
+    return JSON.stringify(obj, null, "\t")
+}

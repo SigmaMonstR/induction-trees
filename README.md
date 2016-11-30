@@ -25,9 +25,17 @@ var test_set = [{"id": 1, "target": 1, "input": 1, "input2": 2},
 ##Basic functionality - basics.js
 ###tab() - basic cross tabs 
 - v1: given an array and user-specified attributes, returns an array of cross-tabs.
+
 ```javascript
 tab(test_set,"input","target")
 ```
+
+###summary() - in-development
+
+###unique() - unique values in list
+
+
+
 
 ##Supervised Learning - rudyTree.js
 ###binaryTree() - for discrete tree learning
@@ -37,3 +45,10 @@ v2: In development will support discrete input variables and provide facility fo
 inputs = ["input","input2"];
 output = binaryTree(test_set,inputs,"target",5)
 ```
+
+###ROC() - Receiving-Operating Characteristics Curve
+
+
+
+##Unsupervised Learning - rudyKmeans.js
+###kmeans() - 

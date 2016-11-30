@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Rudy | Terminal</title>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+    }
+    textarea{
+        background-color: black;
+        color: white;
+    }
+    section{
+        font-family: 'Courier New', Courier, 'Lucida Sans Typewriter';
+        font-size: 11;
+        position: absolute;
+        bottom: 0;
+    }
+    .bararea{
+
+        width:100%;
+    }
+    .cnsl{
+        position: fixed;
+        bottom: 5%;
+        width:90%;
+    }
+    #terminal{
+        position: fixed;
+        width:90%;
+         bottom: 13%;
+    }
+    
+</style>
+<body>
+  <section class="container">
+        <div id="terminal" > 
+            Rudy.js | Testing terminal (in development)<br>
+            -------------------------------------------<br>
+            Try running:<br><br>
+            //create a new variable<br>
+              new_var = [1,  2, 3]<br><br>
+            //code comes pre-loaded with a dataset 'test_set'<br>
+              print(test_set[0])<br><br>
+            //run decision tree<br>
+              inputs = ["input","input2"];<br>
+              output = binaryTree(test_set,inputs,"target",5)<br>
+              print(output)<br><br>
+            
+        </div>
+        <div class="bararea">
+            <textarea id = "cnsl" class="cnsl" onkeydown="if (event.keyCode == 13) { run() };"></textarea>
+            <!--<button onclick="run();">run</button>-->
+        </div>
+      
+   </section>
+    <!--Scripts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="basics.js"></script>
+    <script src="rudyTree.js"></script>
+    <script src="example_set.js"></script>
+      <script>
+          function run(){
+              console.log("passed");
+                var s = document.createElement('script');
+                s.src = 'data:text/javascript,' + encodeURIComponent(document.getElementById('cnsl').value)
+                document.body.appendChild(s);
+              console.log(s);
+              $("#terminal").append("<div>> "+document.getElementById('cnsl').value+"</div>" );
+              $("#terminal").append("<div>> "+eval(document.getElementById('cnsl').value)+"</div>" );
+              $("textarea").val("");
+            }
+          
+          
+        </script>
+    </body>
+</html>
+

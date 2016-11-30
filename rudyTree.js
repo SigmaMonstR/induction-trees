@@ -3,7 +3,7 @@
 
 //rootNode: calculation of root entropy 
 //Note: target value should be binary (0/1)
-//Example: rootNode(examp, "target")
+//Example: rootNode(obj, "target")
 function rootNode(obj, target_var){
     var pos = 0;
     var neg = 0;
@@ -28,7 +28,7 @@ function rootNode(obj, target_var){
 }
 
 //unique -- get list of unique values
-function uniqueList(obj, input_var){
+function unique(obj, input_var){
     var temp = [];
    for(var i = 0; i < obj.length; i++){
        if(temp.indexOf(obj[i][input_var])==-1){
@@ -46,7 +46,7 @@ function giniIndex(obj, target_var, input_var){
     //Variable breakage
     if(typeof(obj[input_var]=="number")){
         console.log("it's a number!");
-        x = uniqueList(obj,input_var).sort();
+        x = unique(obj,input_var).sort();
         console.log(x);
         
         //Count aboves and belows
@@ -191,13 +191,13 @@ function nodeSplit(obj, optimum ){
     return nest
 }
 
-//Update object using dot notation
+//Update object using chaining notation
 function nodeOverwrite(object, path, value){
-  var stack = path.split('.');
-  while(stack.length>1){
-    object = object[stack.shift()];
+  var chained = path.split('.');
+  while(chained.length>1){
+    object = object[chained.shift()];
   }
-  object[stack.shift()] = value;
+  object[chained.shift()] = value;
 }
 
 //binaryTree
