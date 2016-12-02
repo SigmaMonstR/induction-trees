@@ -45,6 +45,7 @@ function sumCol(table, input_var){
     return sum
 }
 
+<<<<<<< Updated upstream
 
 //unique -- get list of unique values
 function unique(obj, input_var){
@@ -60,4 +61,19 @@ function unique(obj, input_var){
 //print
 function print(obj){
     return JSON.stringify(obj, null, "\t")
+=======
+//bin_var() -- Create binary var
+function binVar(obj, input_var,level){
+    
+    for(i = 0; i < obj.length; i++){
+        if(obj[i][input_var]==level){
+            obj[i]["bin_"+level] = 1
+        } else {
+            obj[i]["bin_"+level] = 0
+        }
+            
+    }
+    
+
+>>>>>>> Stashed changes
 }
